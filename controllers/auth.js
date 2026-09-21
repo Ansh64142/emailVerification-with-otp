@@ -26,7 +26,7 @@ const register = async (req, res) => {
       verificationCode,
     });
     await user.save();
-    sendVerificationCode(user.email, verificationCode);
+    await sendVerificationCode(user.email, user.verificationCode);
     res
       .status(201)
       .json({ success: true, message: "User registered successfully", user });
